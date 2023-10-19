@@ -32,10 +32,10 @@ Fig 2 - Modos de 1 a 10 identificados para o Brasil.
 
 #### Modos MG
 
-A figura 3 ilustra os seis primeiros modos identificados para o estado de Minas Gerais, exclusivamente. 
+A figura 3 ilustra os seis primeiros modos identificados para o estado de Minas Gerais, exclusivamente. Seu posicionamento é capaz de ilustrar, já localmente, as presença de correlações na mesma magnitude que a nacional. 
 
 ![MODO](./images/Modos_MG.png)
-Fig 3 - Modos de 1 a 10 identificados para o Brasil.
+Fig 3 - Modos de 1 a 6 identificados para o estado de Minas Gerais.
 
 #### Referências:
 - [Banco de Dados do INMET](https://portal.inmet.gov.br/dadoshistoricos)
