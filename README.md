@@ -50,23 +50,24 @@ Fig 3 - Modos de 1 a 10 identificados para o Brasil.
 ##### Os Coeficientes - BR
 Os modos vistos acima, embora compreendam parte do espaço de "distribuição espacial de chuvas" que poderiam explicar os fenômenos de chuva, não nos informam a participação de cada modo ao longo do tempo.
 
-Mais explicitamente, a distribuição espaço-temporal de chuvas é a combinação linear de modos **espaciais** ponderados por coeficientes **temporais** que 'medem' a importância de cada modo ao longo do tempo. 
+Mais explicitamente, a distribuição espaço-temporal de chuvas é a combinação linear de modos **espaciais** ponderados por coeficientes **temporais** que 'medem' a importância de cada modo ao longo do tempo. O procedimento é uma abordagem baseada na separação de variáveis. 
 
-Por exemplo, o coeficiente temporal relativo ao modo 6, por exemplo, varia ao longo do ano ponderando a participação do modo 6 na distribuiçao de chuvas no período sob análise. Para reconstruir a distribuição de chuvas em um instante qualquer basta multiplicar o conjuntos de coeficientes por seus modos correspondentes e somar os resultados:
+O coeficiente temporal relativo ao modo 6, por exemplo, varia ao longo do ano ponderando a participação do modo 6 na distribuiçao de chuvas no período sob análise. Para reconstruir a distribuição de chuvas em um instante qualquer basta multiplicar o conjuntos de coeficientes por seus modos correspondentes e somar os resultados:
+
+$$ C({\vec{x}},t=t_0) = \sum_{i=1}^{n} a_i(t=t_0) Modo_i({\vec{x}})  $$
 
 
-
-A figura 4, abaixo, mostra a média desses coeficientes ao longo dos anos analisados, onde é possível identificar uma periodicidade em alguns dos modos. Um valor negativo ainda implica na influência do modo, contudo, inverte os fenômenos de estiagem e chuva.  
+A figura 4, abaixo, condensa os coeficientes para um período de um ano, onde é possível identificar uma periodicidade em alguns dos modos. O eixo horizontal representa as semanas do ano. A magnitude dos coeficientes podem variar de positivo para negativo indicando uma inversão nos fenômenos de estiagem para chuva e vice-versa. A figura ainda mostra um perfil processado por filtro gaussiano para destaque da tendência principal de cada coeficiente. 
 
 ![Coeficientes](./images/A_t.png)
 Fig 4 - Modos de 1 a 10 identificados para o Brasil.
 
-Os coeficientes, após filtro gaussiano, ainda podem ser vistos na figura 5 na forma polar, em que o ângulo representa as semanas do ano e o raio, a magnitude do coeficiente. Valores negativos e positivos estão representados nas cores verde e vermelho.  
+A figura 5 apresenta ainda o perfil destacado para cada modo na forma polar para uma melhor visualização dos ciclos. Os ângulos representam as semanas do ano, enquanto o raio representa a magnitude do coeficiente. Valores negativos e positivos para os coeficientes estão representados nas cores verde e vermelho.  
 
 ![Coeficientes](./images/Polar.png)
 Fig 5 - Modos de 1 a 10 identificados para o Brasil.
 
-#### Modos Estaduais -  MG
+#### Olhando Para os Modos a Nível Estadual -  MG
 
 A figura 6 ilustra os seis primeiros modos identificados para o estado de Minas Gerais, exclusivamente. Seu posicionamento é capaz de ilustrar, já localmente, as presença de correlações na mesma magnitude que a nacional. 
 
