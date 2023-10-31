@@ -13,7 +13,8 @@ Nessa etapa, os dados de índice pluviométrico são identificados e associados 
 A localização das estações utilziadas podem ser vistas na figura 1 abaixo.
 
 ![Localizacao](./images/Esp_Dist.png) 
-Fig 1 - Distribuição espacial das estações utilizadas.
+
+Fig 1 - Localização das estações do INMET.
 
 
 ## Parte 2 - O Cálculo
