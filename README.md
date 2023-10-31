@@ -16,8 +16,12 @@ A localização das estações utilziadas podem ser vistas na figura 1 abaixo.
 Fig 1 - Distribuição espacial das estações utilizadas.
 
 
-## Parte 2 - O cálculo
+## Parte 2 - O Cálculo
+Aqui, parte-se dos dados temporais de indíce pluviométrico tratados na parte 1. Os dados, embora localizados espacialmente, serão associados a cidade local da estação para melhor visualização dos modos. 
 
+Os dados de chuva, agora, correspondem a uma matriz cujas linhas representam o tempo, e as colunas o respaço. Em seguida calcula-se a matriz de covariância desses dados, seguido do cálculo de autovetores, que agora representam os modos POD de interesse.   
+
+Por fim, usa-se de interpolação para estimar informação sobre as cidades que não possui uma estação em seu território. 
 ## Resultados
 
 #### TKE
