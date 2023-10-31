@@ -50,14 +50,18 @@ Fig 3 - Modos de 1 a 10 identificados para o Brasil.
 ##### Os Coeficientes - BR
 Os modos vistos acima, embora compreendam parte do espaço de "distribuição espacial de chuvas" que poderiam explicar os fenômenos de chuva, não nos informam a participação de cada modo ao longo do tempo.
 
-Mais explicitamente, a distribuição espaço-temporal de chuvas é a combinação linear de modos espaciais ponderados por coeficientes temporais que 'medem' a importância de cada modo ao longo do tempo. 
+Mais explicitamente, a distribuição espaço-temporal de chuvas é a combinação linear de modos **espaciais** ponderados por coeficientes **temporais** que 'medem' a importância de cada modo ao longo do tempo. 
 
-A figura 4, abaixo, mostra a média desses coeficientes ao longo dos anos analisados, onde é possível identificar uma periodicidade em alguns dos modos. Um valor negativo implica, ainda, na influência do modo, contudo, invertendo os fenômenos de estiagem e chuva.  
+Por exemplo, o coeficiente temporal relativo ao modo 6, por exemplo, varia ao longo do ano ponderando a participação do modo 6 na distribuiçao de chuvas no período sob análise. Para reconstruir a distribuição de chuvas em um instante qualquer basta multiplicar o conjuntos de coeficientes por seus modos correspondentes e somar os resultados:
+
+
+
+A figura 4, abaixo, mostra a média desses coeficientes ao longo dos anos analisados, onde é possível identificar uma periodicidade em alguns dos modos. Um valor negativo ainda implica na influência do modo, contudo, inverte os fenômenos de estiagem e chuva.  
 
 ![Coeficientes](./images/A_t.png)
 Fig 4 - Modos de 1 a 10 identificados para o Brasil.
 
-Os coeficientes, após filtro gaussiano, ainda podem ser vistos na figura 5 na forma polar, em que o ângulo representa a semana e o raio a magnitude do coeficiente. Valores negativos e positivos estão representados nas cores verde e vermelho.  
+Os coeficientes, após filtro gaussiano, ainda podem ser vistos na figura 5 na forma polar, em que o ângulo representa as semanas do ano e o raio, a magnitude do coeficiente. Valores negativos e positivos estão representados nas cores verde e vermelho.  
 
 ![Coeficientes](./images/Polar.png)
 Fig 5 - Modos de 1 a 10 identificados para o Brasil.
