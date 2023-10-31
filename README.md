@@ -12,7 +12,7 @@ Nessa etapa, os dados de índice pluviométrico são identificados e associados 
 
 A localização das estações utilziadas podem ser vistas na figura 1 abaixo.
 
-![Localizacao](./images/Esp_Dist.png)
+![Localizacao](./images/Esp_Dist.png) 
 Fig 1 - Distribuição espacial das estações utilizadas.
 
 
