@@ -7,6 +7,7 @@ O procedimento **decompõe** os dados espaciais de chuvas diárias para identifi
 De maneira simples, o método identifica se há correlação entre os índices pluviómetricos em todo o país, identifica os modos como essas correlações ocorrem e dão um "peso" a cada modo. Matematicamente, os modos correspondem ao autovetores da matriz de correlação da tabela de chuvas e suas relevâncias, ou pesos, são definidos pelo conjunto de autovalores associado.  
 
 ## Parte 1 - Tratamento de dados
+obs: não consegui usar api's do inmet
 Nessa etapa, os dados de índice pluviométrico são identificados e associados à sua localização (latitude e longitude). Em seguida, um processo de tratamento de dados altera os dados com valores negativos ou NaNs de uma dada localização pela média, ponderada pelo inverso do quadrado da distância, das estações vizinhas.    
 
 A localização das estações utilziadas podem ser vistas na figura 1 abaixo.
