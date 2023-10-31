@@ -57,12 +57,17 @@ A figura 4, abaixo, mostra a média desses coeficientes ao longo dos anos analis
 ![Coeficientes](./images/A_t.png)
 Fig 4 - Modos de 1 a 10 identificados para o Brasil.
 
+Os coeficientes, após filtro gaussiano, ainda podem ser vistos na figura 5 na forma polar, em que o ângulo representa a semana e o raio a magnitude do coeficiente. Valores negativos e positivos estão representados nas cores verde e vermelho.  
+
+![Coeficientes](./images/Polar.png)
+Fig 5 - Modos de 1 a 10 identificados para o Brasil.
+
 #### Modos Estaduais -  MG
 
-A figura 5 ilustra os seis primeiros modos identificados para o estado de Minas Gerais, exclusivamente. Seu posicionamento é capaz de ilustrar, já localmente, as presença de correlações na mesma magnitude que a nacional. 
+A figura 6 ilustra os seis primeiros modos identificados para o estado de Minas Gerais, exclusivamente. Seu posicionamento é capaz de ilustrar, já localmente, as presença de correlações na mesma magnitude que a nacional. 
 
 ![MODO](./images/Modos_MG.png)
-Fig 5 - Modos de 1 a 6 identificados para o estado de Minas Gerais.
+Fig 6 - Modos de 1 a 6 identificados para o estado de Minas Gerais.
 
 #### Referências:
 - [Banco de Dados do INMET](https://portal.inmet.gov.br/dadoshistoricos)
