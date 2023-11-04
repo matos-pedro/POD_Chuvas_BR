@@ -2,13 +2,22 @@
 Explora-se o banco de dados meteorológicos do INMET, a partir de dados coletados por cerca de 600 estações distribuídas pelo Brasil entre os anos de 2013 a 2022, através do método POD, *Proper Orthogonal Decomposition*.
 
 ## Como?
-O procedimento **decompõe** os dados espaciais de chuvas diárias para identificação de modos - também espaciais - que possam, em algum nível, levantar informações sobre fenômeno de chuvas no país.
+O procedimento **decompõe** os dados espaciais de chuvas diárias coletadas pelo país para então identificar modos - também espaciais - que possam, em algum nível, levantar informações sobre o fenômeno de chuvas no país.
 
-De maneira simples, o método identifica se há correlação entre os índices pluviómetricos em todo o país, identifica os modos como essas correlações ocorrem e dão um "peso" a cada modo. Matematicamente, os modos correspondem ao autovetores da matriz de correlação da tabela de chuvas e suas relevâncias, ou pesos, são definidos pelo conjunto de autovalores associado.  
+De maneira simples, o método identifica modos que explicam as oscilações no índice pluviométrico ao longo do país - similarmente aos modos observáveis para uma corda de extremidade fixa - e os associa a coeficientes que ponderam a relevância do modo ao longo do período analisado. 
+
+Matematicamente, os modos correspondem aos autovetores da matriz de covariância da tabela de chuvas. Já os coeficientes associados, definidos pelo conjunto de autovalores.  
+
+Dada as definições, a distribuição de chuvas pode ser reconstruída a partir dos modos **espaciais** e os coeficientes **temporais** por:
+
+$$ C({x,y,z},t=t_0) = \sum_{i=1}^{n} a_i(t=t_0) Modo_i({{x,y,z}}),$$
+
+em que $C({x,y,z},t)$ é o desvio do índice pluviométrico com relação á distribuição média $\bar{C}({x,y,z})$. 
 
 ## Parte 1 - Tratamento de dados
-obs: não consegui usar api's do inmet
-Nessa etapa, os dados de índice pluviométrico são identificados e associados à sua localização (latitude e longitude). Em seguida, um processo de tratamento de dados altera os dados com valores negativos ou NaNs de uma dada localização pela média, ponderada pelo inverso do quadrado da distância, das estações vizinhas.    
+*obs: não consegui usar api's do inmet*
+
+Nessa etapa, os dados de índice pluviométrico são identificados e associados à sua localização (latitude e longitude). Em seguida, um processo de tratamento de dados altera os dados com valores negativos ou NaNs de uma dada localização pela média dos índices das estações vizinhas, ponderada pelo inverso do quadrado da distância.    
 
 A localização das estações utilziadas podem ser vistas na figura 1 abaixo.
 
@@ -26,9 +35,9 @@ Por fim, usa-se de interpolação para estimar informação sobre as cidades que
 ## Resultados
 
 #### TKE
-Os resuldados levaram a identificação de muitos modos, devido à alta dimensão da matriz de dados. A figura abaixo mostra a importância de cada modo a partir do índice TKE, que representa o autovalor, relativo à soma dos autovalores, do modo correspondente. Nota-se que o primeiro modo é "duas vezes mais importante" que o segundo modo. 
+Os resuldados levaram a identificação de muitos modos, devido à alta dimensão da matriz de dados. A figura 2 abaixo mostra a importância de cada modo a partir do índice TKE, que representa o valor do autovalor associado normalizado pela soma de todos autovalores. Vê-se, por exemplo, que o primeiro modo é aproximadamente "duas vezes mais importante" que o segundo modo. 
 
-A figura 2 c) ilustra que somente se é capaz de explicar a totalidade dos dados de chuva se todos os modos forem adicinados. Contudo, vale dizer, que os modos mais altos não necessariamente implicam em fenômenos reais, mas a reprodução de 'ruídos' dos dados. 
+A figura 2 c) ilustra que somente se é capaz de explicar a totalidade dos dados de chuva se todos os modos forem adicionados. Contudo, vale dizer, que os modos mais altos não necessariamente implicam em fenômenos reais, mas à identificação de correlações fracas a nível de ruído presentes nos dados. 
 
 
 ![TKE](./images/TKE.png)
@@ -36,11 +45,11 @@ Fig 2 - Plots de TKE a) TKE para todos os modos, b) TKE para os modos até 20, c
 
 #### Modos BR
 
-A figura 3 ilustra os modos identificados. No que diz respeito à coloração utilizada, afirma-se que quando dois municípios apresentam cores inversas, diz-se que tais município possui correlação negativa quanto à variação de chuva, ou melhor, quando um dos municípios apresentam aumento de chuva, o outro apresenta diminuição, e vice-versa. Aqui, azul e vermelha representam cores opostas.
+A figura 3 ilustra os modos identificados. No que diz respeito à coloração utilizada, afirma-se que quando dois municípios apresentam cores inversas, diz-se que tais município possui correlação negativa quanto à variação de chuva, ou melhor, quando um dos municípios apresentam aumento no indice de chuvas, o outro apresenta diminuição, e vice-versa. Aqui, azul e vermelha representam cores opostas.
 
 Nota-se que o Modo 1, de maior predominância, indica que o país inteiro possui uma correlação positiva (mesma cor), sugerindo que o país experimenta, primariamente, o aumento de chuvas como um todo. 
 
-O segundo Modo, por sua vez, demonstra uma correlação negativa entre a região sul e grande porção central do país. 
+O segundo Modo, por sua vez, demonstra uma correlação negativa mais intensa entre a região sul e grande porção central do país. 
 
 Os modos de 3 a 10 ainda ilustram outras particularidades no fenômeno de chuva do país.
 
@@ -54,10 +63,12 @@ Mais explicitamente, a distribuição espaço-temporal de chuvas é a combinaç�
 
 O coeficiente temporal relativo ao modo 6, por exemplo, varia ao longo do ano ponderando a participação do modo 6 na distribuiçao de chuvas no período sob análise. Para reconstruir a distribuição de chuvas em um instante qualquer basta multiplicar o conjuntos de coeficientes por seus modos correspondentes e somar os resultados:
 
-$$ C({\vec{x}},t=t_0) = \sum_{i=1}^{n} a_i(t=t_0) Modo_i({\vec{x}})  $$
+$$ C({x,y,z},t=t_0) = \sum_{i=1}^{n} a_i(t=t_0) Modo_i({{x,y,z}})$$
 
 
-A figura 4, abaixo, condensa os coeficientes para um período de um ano, onde é possível identificar uma periodicidade em alguns dos modos. O eixo horizontal representa as semanas do ano. A magnitude dos coeficientes podem variar de positivo para negativo indicando uma inversão nos fenômenos de estiagem para chuva e vice-versa. A figura ainda mostra um perfil processado por filtro gaussiano para destaque da tendência principal de cada coeficiente. 
+A figura 4, abaixo, reduz a um ano os coeficientes correspondentes ao período de 10 anos. O gráfico é interessante para se identifcar periodicidade anual. A região em cinza cobre um desvio padrão com relação ao coeficiente médio calculado para a o instante aassociado. O eixo horizontal tá em expresso em semanas.
+
+A magnitude dos coeficientes podem variar de positivo para negativo indicando uma inversão nos fenômenos de estiagem para chuva e vice-versa. A figura ainda mostra um perfil processado por filtro gaussiano para destaque da tendência principal de cada coeficiente. 
 
 ![Coeficientes](./images/A_t.png)
 Fig 4 - Modos de 1 a 10 identificados para o Brasil.
