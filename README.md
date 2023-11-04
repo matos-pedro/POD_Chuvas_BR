@@ -10,7 +10,7 @@ Matematicamente, os modos correspondem aos autovetores da matriz de covariância
 
 Dada as definições, a distribuição de chuvas pode ser reconstruída a partir dos modos **espaciais** e os coeficientes **temporais** por:
 
-$$ C({x,y,z},t=t_0) = \sum_{i=1}^{n} a_i(t=t_0) Modo_i({{x,y,z}}),$$
+$$ C({x,y,z},t) = \sum_{i=1}^{n} a_i(t) Modo_i({{x,y,z}}),$$
 
 em que $C({x,y,z},t)$ é o desvio do índice pluviométrico com relação á distribuição média $\bar{C}({x,y,z})$. 
 
