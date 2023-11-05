@@ -8,11 +8,11 @@ De maneira simples, o método identifica modos que explicam as oscilações no �
 
 Matematicamente, os modos correspondem aos autovetores da matriz de covariância da tabela de chuvas. Já os coeficientes associados, definidos pelo conjunto de autovalores.  
 
-Dada as definições, a distribuição de chuvas pode ser reconstruída a partir dos modos **espaciais** e os coeficientes **temporais** por:
+Dada as definições, a distribuição de chuvas pode ser reconstruída a partir dos modos **espaciais**, $M_i({x,y,z})$, e os coeficientes **temporais**,$a_i(t)$, por:
 
-$$ C({x,y,z},t) = \sum_{i=1}^{n} a_i(t) Modo_i({{x,y,z}}),$$
+$$ C({x,y,z},t) = \overline{C({x,y,z})} + \sum_{i=1}^{n} a_i(t) M_i({{x,y,z}}),$$
 
-em que $C({x,y,z},t)$ é o desvio do índice pluviométrico com relação á distribuição média $\bar{C}({x,y,z})$. 
+em que $C({x,y,z},t)$ é o índice pluviométrico na posição $(x,y,z)$ e tempo $t$, e $\bar{C}({x,y,z})$, a distribuição espacial média calcualda sobre todo o período. 
 
 ## Parte 1 - Tratamento de dados
 *obs: não consegui usar api's do inmet*
@@ -63,7 +63,7 @@ Mais explicitamente, a distribuição espaço-temporal de chuvas é a combinaç�
 
 O coeficiente temporal relativo ao modo 6, por exemplo, varia ao longo do ano ponderando a participação do modo 6 na distribuiçao de chuvas no período sob análise. Para reconstruir a distribuição de chuvas em um instante qualquer basta multiplicar o conjuntos de coeficientes por seus modos correspondentes e somar os resultados:
 
-$$ C({x,y,z},t=t_0) = \sum_{i=1}^{n} a_i(t=t_0) Modo_i({{x,y,z}})$$
+$$ C({x,y,z},t) = \overline{C({x,y,z})} + \sum_{i=1}^{n} a_i(t) M_i({{x,y,z}}),$$
 
 
 A figura 4, abaixo, reduz a um ano os coeficientes correspondentes ao período de 10 anos. O gráfico é interessante para se identifcar periodicidade anual. A região em cinza cobre um desvio padrão com relação ao coeficiente médio calculado para a o instante aassociado. O eixo horizontal tá em expresso em semanas.
