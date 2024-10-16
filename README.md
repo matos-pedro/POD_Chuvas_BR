@@ -13,14 +13,6 @@ O procedimento **decompõe** os dados espaciais de chuvas diárias coletadas pel
 
 De maneira simples, o método identifica modos que explicam as oscilações no índice pluviométrico ao longo do país - similarmente aos modos observáveis para uma corda de extremidade fixa - e os associa a coeficientes que ponderam a relevância do modo ao longo do período analisado. 
 
-<!-- Matematicamente, os modos correspondem aos autovetores da matriz de covariância da tabela de chuvas. Já os coeficientes associados, definidos pelo conjunto de autovalores.  
-
-Dada as definições, a distribuição de chuvas pode ser reconstruída a partir dos modos **espaciais**, $M_i({x,y,z})$, e os coeficientes **temporais**,$a_i(t)$, por:
-
-$$ C({x,y,z},t) = \overline{S({x,y,z})} + \sum_{i=1}^{n} a_i(t) M_i({{x,y,z}}),$$
-
-
-em que $C({x,y,z},t)$ é o índice pluviométrico na posição $(x,y,z)$ e tempo $t$, e $\overline{S({x,y,z})}$, a distribuição espacial média calcualda sobre todo o período.  -->
 
 ### Parte 1 - Dados de Chuva e Tratamento
 
@@ -32,14 +24,14 @@ Para preencher valores faltantes ou discrepantes, aplicou-se uma interpolação 
 
 A interpolação ponderada foi realizada com base na seguinte equação:
 
-\[
+```math
 c(\vec{x}_j, t) = \frac{\sum_{i=1}^{30} c(\vec{x}_i, t) . d(\vec{x}_j, \vec{x}_i)^{-p}}{\sum_{i=1}^{30} {d(\vec{x}_j, \vec{x}_i)^{-p}}} \tag{1}
-\]
+```
 
 Onde:
-- \( c(\vec{x}_j, t) \) é o índice pluviométrico da estação \( \vec{x}_j \) no instante \( t \);
-- \( d(\vec{x}_j, \vec{x}_i) \) é a distância entre a estação \( \vec{x}_j \) e sua vizinha \( \vec{x}_i \);
-- \( p \) é um parâmetro positivo que regula o peso dado à distância, sendo fixado em \( p = 2 \).
+- $c(\vec{x}_j, t)$ é o índice pluviométrico da estação $\vec{x}_j$ no instante $t$;
+- $d(\vec{x}_j, \vec{x}_i)$ é a distância entre a estação $\vec{x}_j$ e sua vizinha $\vec{x}_i$;
+- $p$ é um parâmetro positivo que regula o peso dado à distância, sendo fixado em $p = 2$.
 
 ### Parte 2 - O Cálculo
 
@@ -51,18 +43,18 @@ A **Decomposição Ortogonal Própria (DOP)** é uma técnica poderosa utilizada
 
 A aplicação da DOP sobre os dados de chuva resulta na identificação de mapas modais que explicam o perfil espacial de precipitações. A relação é dada pela seguinte aproximação:
 
-\[
+```math
 \widehat{c\left(\vec{x};t\right)}_k = \bar{c\left(\vec{x}\right)} + \sum_{i=1}^{N} a_i(t) M_i\left(\vec{x}\right) \tag{2}
-\]
+```
 
 Onde:
-- \(\widehat{c\left(\vec{x};t\right)}_k\) é uma estimativa para \(c\left(\vec{x};t\right)\);
-- \(\bar{c\left(\vec{x}\right)}\) é o campo de precipitação médio na posição \(\vec{x}\);
-- \(M_i\left(\vec{x}\right)\) são os modos espaciais que estabelecem correlações em diferentes regiões;
-- \(a_i(t)\) é o coeficiente temporal que pondera a contribuição do modo \(M_i\) no instante \(t\);
-- \(N\) é o número total de modos identificados.
+- $\widehat{c\left(\vec{x};t\right)}_k$ é uma estimativa para $c\left(\vec{x};t\right)$;
+- $\bar{c\left(\vec{x}\right)}$ é o campo de precipitação médio na posição $\vec{x}$;
+- $M_i\left(\vec{x}\right)$ são os modos espaciais que estabelecem correlações em diferentes regiões;
+- $a_i(t)$ é o coeficiente temporal que pondera a contribuição do modo $M_i$ no instante $t$;
+- $N$ é o número total de modos identificados.
 
-Os modos são ordenados por sua capacidade de capturar a variância dos dados originais, com os primeiros modos sendo os que melhor aproximam a estimativa \(\widehat{c\left(\vec{x};t\right)}_n\) do valor real \(c\left(\vec{x};t\right)\).
+Os modos são ordenados por sua capacidade de capturar a variância dos dados originais, com os primeiros modos sendo os que melhor aproximam a estimativa $\widehat{c\left(\vec{x};t\right)}_n$ do valor real $c\left(\vec{x};t\right)$.
 
 ### Procedimentos da DOP
 
@@ -70,23 +62,23 @@ Os modos são ordenados por sua capacidade de capturar a variância dos dados or
    Os dados de precipitação semanal foram organizados em uma matriz \(I\), onde as linhas representam as estações meteorológicas e as colunas, as semanas do período estudado.
 
 2. **Identificação das Anomalias**: 
-   Para cada estação, a média de precipitação foi calculada e subtraída dos dados, resultando em uma matriz de anomalias \(A\).
+   Para cada estação, a média de precipitação foi calculada e subtraída dos dados, resultando em uma matriz de anomalias $A$.
 
 3. **Cálculo da Matriz de Covariância**: 
-   A matriz de covariância \(C\) é definida como:
-   \[
+   A matriz de covariância $C$ é definida como:
+```math
    C = \frac{1}{m - 1} A^T A \tag{3}
-   \]
-   Onde \(m\) é o número de mapas de chuvas usados na análise.
+```
+   Onde $m$ é o número de mapas de chuvas usados na análise.
 
 4. **Cálculo dos Modos da Matriz de Chuvas**: 
-   Os autovetores e autovalores da matriz \(C\) foram calculados. Os autovetores fornecem os modos \(M_i\) e os autovalores \(\lambda_i\) indicam a variância explicada por cada modo.
+   Os autovetores e autovalores da matriz $C$ foram calculados. Os autovetores fornecem os modos $M_i$ e os autovalores $\lambda_i$ indicam a variância explicada por cada modo.
 
 5. **Cálculo dos Coeficientes Temporais**: 
    Os coeficientes temporais são calculados pela equação:
-   \[
+```math
    a_i(t) = A M_i \tag{4}
-   \]
+```
 
 ### Complementação dos Dados
 
@@ -142,15 +134,18 @@ O **primeiro modo**, considerado dominante, indica correlação positiva para gr
 
 Os **autovalores** dos modos foram calculados para mensurar sua importância na composição do mapa de chuvas nacional. A **Figura 6** apresenta o autovalor normalizado para todos os modos, onde o modo dominante explica cerca de **23%** da variância dos dados, seguido do segundo e terceiro modos, que explicam **7%** e **6%**, respectivamente.
 
-
-<img src="./images/Lambda.png" alt="Localização" width="500" />
+<p align="center">
+   <img src="./images/Lambda.png" alt="Localização" width="500" />
+</p>
 
 **Figura 6**: Espectro de autovalores normalizados para os modos DOP calculados.
 
 A curva acumulada de autovalores normalizados, mostrada na **Figura 7**, indica que os **10 primeiros modos** explicam aproximadamente **50%** da variância total, aumentando para **70%** ao considerar **50 modos**.
 
 
-<img src="./images/cumsum.png" alt="Localização" width="500" />
+<p align="center">
+  <img src="./images/Cumsum.png" alt="Localização" width="500" />
+</p>
 
 **Figura 7**: Variância normalizada explicada pela composição dos primeiros modos \(k\).
 
@@ -190,7 +185,7 @@ A **Figura 9** representa na forma polar temporal a evolução de doze dos coefi
 
 Há, ainda, a representação no espaço de fases dos coeficientes, onde um coeficiente pode ser expresso contra os outros coeificientes. A Figura **Figura 10** mostra essa representação, que torna implícita a variável temporal. 
 
-<img src="./images/3xTodos.png" alt="Localização" width="1000" />
+<img src="./images/3xtodos.png" alt="Localização" width="1000" />
 
 **Figura 10**: Representação em espaço de fases dos coeficientes com relação ao coeficiente 3 $a_3(t)$.  
 
